@@ -4,13 +4,17 @@ import {Card, Col, Row, Form, Button} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
 import * as yup from 'yup';
 import {useFormik} from 'formik';
+import axios from "axios";
 import styles from './SignIn.module.css';
+import routes from "../routes";
+import useAuth from "../hooks";
 
 
 const SignIn = () => {
   const inputRef = useRef();
   const [authFailed, setAuthFailed] = useState(false);
   const navigate = useNavigate();
+  const auth = useAuth();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -31,14 +35,25 @@ const SignIn = () => {
       try {
         actions.setSubmitting(true);
         console.log(values);
+        const response = await axios.post(routes.loginPath(), values);
+        localStorage.setItem('userId', JSON.stringify(response.data));
+        auth.logIn();
         setAuthFailed(false);
         actions.setSubmitting(false);
-        navigate('/');
-        return values;
+        navigate(routes.homePagePath());
       } catch (err) {
-        console.log(err)
-        setAuthFailed(true);
         actions.setSubmitting(false);
+        if (!err.isAxiosError) {
+          console.log('неизвестная ошибка');
+          throw err;
+        }
+        if (err.response?.status === 401) {
+          setAuthFailed(true);
+          inputRef.current.select();
+        } else {
+          console.log('ошибка сети');
+          throw err;
+        }
         return values;
       }
     },
@@ -57,7 +72,7 @@ const SignIn = () => {
                 <Form onSubmit={formik.handleSubmit} noValidate>
                   <Form.Group className={styles.formGroup}>
                     <Form.Label htmlFor="username">
-                      Ваш ник
+                      Имя пользователя
                     </Form.Label>
                     <Form.Control
                       onChange={formik.handleChange}
@@ -99,7 +114,7 @@ const SignIn = () => {
                     />
 
                     <Form.Control.Feedback type="invalid">
-                      {formik.errors.password}
+                      {formik.errors.password || 'имя пользователя или пароль неверны'}
                     </Form.Control.Feedback>
                   </Form.Group>
 
