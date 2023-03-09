@@ -8,6 +8,7 @@ import axios from "axios";
 import styles from './SignIn.module.css';
 import routes from "../routes";
 import useAuth from "../hooks";
+import Loading from "../components/Loading";
 
 
 const SignIn = () => {
@@ -129,7 +130,7 @@ const SignIn = () => {
                       formik.isSubmitting
                     }
                   >
-                    Войти
+                    {formik.isSubmitting ? <Loading /> : <span>Войти</span>}
                   </Button>
                 </Form>
               </div>

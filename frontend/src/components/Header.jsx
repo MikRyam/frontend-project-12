@@ -8,8 +8,8 @@ import AuthButton from "./AuthButton";
 
 const Header = () => {
   return (
-
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top" className="shadow">
+    // fixed="top"
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="shadow">
       <Container>
         <NavLink className="navbar-brand" to={routes.homePagePath()}>Chat App</NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
