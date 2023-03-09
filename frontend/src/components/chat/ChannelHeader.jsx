@@ -1,10 +1,9 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import Loading from "../Loading";
 import {useGetChannelsDataQuery} from "../../features/channels/channelsApiSlice";
 
 const ChannelHeader = () => {
-  const {data, error, isLoading} = useGetChannelsDataQuery();
+  const {isLoading} = useGetChannelsDataQuery();
   const channels = useSelector((state) => state.channels.channels);
   const currentChannelId = useSelector((state) => state.currentChannel.currentChannelId);
   const currentChannel = channels.find(({id}) => id === currentChannelId);

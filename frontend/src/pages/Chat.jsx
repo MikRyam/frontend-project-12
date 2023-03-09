@@ -24,21 +24,9 @@ const Chat = () => {
             <AddMessage />
           </div>
         </Col>
-
       </Row>
     </Container>
   );
 };
 
 export default Chat;
-
-
-{/*{error ? (*/}
-{/*  <>Oh no, there was an error</>*/}
-{/*) : isLoading ? (*/}
-{/*  <>Loading...</>*/}
-{/*) : data ? (*/}
-{/*  <>*/}
-{/*    <h3>{data.currentChannelId}</h3>*/}
-{/*  </>*/}
-{/*) : null}*/}

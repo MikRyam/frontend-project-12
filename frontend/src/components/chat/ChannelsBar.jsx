@@ -1,6 +1,6 @@
 import React from 'react';
 import {useGetChannelsDataQuery} from "../../features/channels/channelsApiSlice";
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Channel from "./Channel";
 import BasicChannel from "./BasicChannel";
 import Loading from "../Loading";
