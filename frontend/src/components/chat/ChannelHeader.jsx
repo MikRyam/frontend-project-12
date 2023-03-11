@@ -9,8 +9,10 @@ const ChannelHeader = () => {
     (state) => state.channels.currentChannelId,
   );
   const currentChannel = channels.find(({ id }) => id === currentChannelId);
-
   const messages = useSelector((state) => state.messages.messages);
+  const channelMessages = messages.filter(
+    ({ channelId }) => channelId === currentChannelId,
+  );
 
   if (messages) {
     console.log('messages: ', messages);
@@ -29,7 +31,7 @@ const ChannelHeader = () => {
             <b># {currentChannel?.name}</b>
           </p>
           <span className="text-muted">
-            {`${messages?.length ?? 'Нет'} сообщений`}
+            {`${channelMessages?.length ?? 'Нет'} сообщений`}
           </span>
         </>
       )}

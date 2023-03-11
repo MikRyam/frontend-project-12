@@ -6,7 +6,7 @@ export const channelsApi = createApi({
     baseUrl: '/api/v1/',
     credentials: 'include',
     prepareHeaders: (headers) => {
-      const userId = JSON.parse(localStorage.getItem('userId'));
+      const userId = JSON.parse(localStorage.getItem('user'));
       const { token } = userId;
       // const token = getState().auth.token
 

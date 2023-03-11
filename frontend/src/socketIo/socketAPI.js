@@ -23,14 +23,14 @@ const socketAPI = (socket) => {
     store.dispatch(renameChannel({ id, name }));
   });
 
-  const createMessage = (message) =>
+  const addNewMessage = (message) =>
     socket.emit('newMessage', message, (response) => {
       if (response.status !== 'ok') {
         console.log(response.status);
       }
     });
 
-  const createChannel = (channel) =>
+  const addNewChannel = (channel) =>
     socket.emit('newChannel', channel, (response) => {
       // if (response.status === 'ok') {
       //   const { id } = response.data;
@@ -54,8 +54,8 @@ const socketAPI = (socket) => {
     });
 
   return {
-    createMessage,
-    createChannel,
+    addNewMessage,
+    addNewChannel,
     deleteChannel,
     updateChannel,
   };

@@ -2,11 +2,11 @@ import React from 'react';
 import { socketContext } from '../contexts';
 
 const SocketProvider = ({ socket, children }) => {
-  const { createMessage, createChannel, deleteChannel, updateChannel } = socket;
+  const { addNewMessage, addNewChannel, deleteChannel, updateChannel } = socket;
 
   return (
     <socketContext.Provider
-      value={{ createMessage, createChannel, deleteChannel, updateChannel }}
+      value={{ addNewMessage, addNewChannel, deleteChannel, updateChannel }}
     >
       {children}
     </socketContext.Provider>

@@ -36,7 +36,7 @@ const SignIn = () => {
         actions.setSubmitting(true);
         console.log(values);
         const response = await axios.post(routes.loginPath(), values);
-        localStorage.setItem('userId', JSON.stringify(response.data));
+        localStorage.setItem('user', JSON.stringify(response.data));
         auth.logIn();
         setAuthFailed(false);
         actions.setSubmitting(false);

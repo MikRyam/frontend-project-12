@@ -11,8 +11,7 @@ const messagesSlice = createSlice({
   initialState,
   reducers: {
     addMessage: (state, action) => {
-      state.channels.push(action.payload);
-      state.currentChannelId = action.payload.id;
+      state.messages.push(action.payload);
     },
   },
   extraReducers: (builder) => {
