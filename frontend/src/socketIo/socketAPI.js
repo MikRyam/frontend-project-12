@@ -1,5 +1,4 @@
 import { store } from '../app/store';
-// import { useDispatch } from 'react-redux';
 import {
   addChannel,
   removeChannel,
@@ -8,8 +7,6 @@ import {
 import { addMessage } from '../features/messages/messagesSlice';
 
 const socketAPI = (socket) => {
-  // const dispatch = useDispatch();
-
   socket.on('newMessage', (message) => {
     store.dispatch(addMessage(message));
   });
