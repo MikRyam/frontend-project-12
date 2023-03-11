@@ -1,15 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
-import Container from "react-bootstrap/Container";
-import {Card, Col, Row, Form, Button} from "react-bootstrap";
-import {Link, useNavigate} from "react-router-dom";
+import React, { useEffect, useRef, useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import { Card, Col, Row, Form, Button } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import {useFormik} from 'formik';
-import axios from "axios";
+import { useFormik } from 'formik';
+import axios from 'axios';
 import styles from './SignIn.module.css';
-import routes from "../routes";
-import useAuth from "../hooks";
-import Loading from "../components/Loading";
-
+import routes from '../routes';
+import useAuth from '../hooks';
+import Loading from '../components/Loading';
 
 const SignIn = () => {
   const inputRef = useRef();
@@ -66,15 +65,11 @@ const SignIn = () => {
         <Col xs={12} md={6} xxl={4} className="mt-5 mb-5">
           <Card className="shadow bg-light text-black">
             <Card.Body className="p-lg-4 p-xl-5">
-              <h1 className="mb-4 fw-light text-center">
-                Вход
-              </h1>
+              <h1 className="mb-4 fw-light text-center">Вход</h1>
               <div className="pt-lg-3">
                 <Form onSubmit={formik.handleSubmit} noValidate>
                   <Form.Group className={styles.formGroup}>
-                    <Form.Label htmlFor="username">
-                      Имя пользователя
-                    </Form.Label>
+                    <Form.Label htmlFor="username">Имя пользователя</Form.Label>
                     <Form.Control
                       onChange={formik.handleChange}
                       value={formik.values.username}
@@ -95,9 +90,7 @@ const SignIn = () => {
                     </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group className={styles.formGroup}>
-                    <Form.Label htmlFor="password">
-                      Пароль
-                    </Form.Label>
+                    <Form.Label htmlFor="password">Пароль</Form.Label>
                     <Form.Control
                       onChange={formik.handleChange}
                       value={formik.values.password}
@@ -115,7 +108,8 @@ const SignIn = () => {
                     />
 
                     <Form.Control.Feedback type="invalid">
-                      {formik.errors.password || 'имя пользователя или пароль неверны'}
+                      {formik.errors.password ||
+                        'имя пользователя или пароль неверны'}
                     </Form.Control.Feedback>
                   </Form.Group>
 
@@ -125,8 +119,10 @@ const SignIn = () => {
                     className="w-100 pb-2 pt-2 mt-5"
                     data-disable-with="Войти"
                     disabled={
-                      (formik.errors.username || formik.errors.password) ||
-                      (!formik.values.username || !formik.values.password) ||
+                      formik.errors.username ||
+                      formik.errors.password ||
+                      !formik.values.username ||
+                      !formik.values.password ||
                       formik.isSubmitting
                     }
                   >
@@ -137,9 +133,7 @@ const SignIn = () => {
             </Card.Body>
             <Card.Footer className="border-top-0 text-center py-3 bg-light">
               <div className="py-lg-2 d-flex justify-content-center gap-3">
-                <span className="text-muted">
-                  Нет аккаунта?
-                </span>
+                <span className="text-muted">Нет аккаунта?</span>
                 <Link className="link-dark" to="/signup">
                   Создать аккаунт
                 </Link>

@@ -11,9 +11,9 @@ export const channelsApi = createApi({
       // const token = getState().auth.token
 
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`)
+        headers.set('Authorization', `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
   }),
   endpoints: (builder) => ({
@@ -21,7 +21,7 @@ export const channelsApi = createApi({
       query: () => `data`,
     }),
   }),
-})
+});
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints

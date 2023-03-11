@@ -1,43 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter} from "react-router-dom";
+import { io } from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import AppRoutes from "./AppRoutes";
-import AuthContext from "./contexts";
-import {Provider} from 'react-redux'
-import {store} from './app/store'
+import init from './init';
 
-const AuthProvider = ({children}) => {
-  const [loggedIn, setLoggedIn] = useState(false);
+const run = async () => {
+  const socket = io();
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  const dom = await init(socket);
+  root.render(dom);
 
-  const logIn = () => setLoggedIn(true);
-  const logOut = () => {
-    localStorage.removeItem('userId');
-    setLoggedIn(false);
-  };
-
-  return (
-    <AuthContext.Provider value={{loggedIn, logIn, logOut}}>
-      {children}
-    </AuthContext.Provider>
-  );
+  // If you want to start measuring performance in your app, pass a function
+  // to log results (for example: reportWebVitals(console.log))
+  // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+  reportWebVitals();
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <BrowserRouter>
-    <AuthProvider>
-      <Provider store={store}>
-        <AppRoutes/>
-      </Provider>
-    </AuthProvider>
-  </BrowserRouter>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+run();
