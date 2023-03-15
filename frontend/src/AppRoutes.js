@@ -4,7 +4,6 @@ import useAuth from './hooks';
 import './App.css';
 import Layout from './components/Layout';
 import Chat from './Pages/Chat';
-import About from './Pages/About';
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import NotFoundPage from './Pages/NotFoundPage';
@@ -28,7 +27,6 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
-        <Route path="about" element={<About />} />
         <Route path="login" element={<SignIn />} />
         <Route path="signup" element={<SignUp />} />
       </Route>

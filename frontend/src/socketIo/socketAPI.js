@@ -3,6 +3,7 @@ import {
   addChannel,
   removeChannel,
   renameChannel,
+  setCurrentChannel,
 } from '../features/channels/channelsSlice';
 import { addMessage } from '../features/messages/messagesSlice';
 
@@ -32,10 +33,10 @@ const socketAPI = (socket) => {
 
   const addNewChannel = (channel) =>
     socket.emit('newChannel', channel, (response) => {
-      // if (response.status === 'ok') {
-      //   const { id } = response.data;
-      //   dispatch(setCurrentChannelId(id));
-      // }
+      if (response.status === 'ok') {
+        const { id } = response.data;
+        store.dispatch(setCurrentChannel(id));
+      }
       console.log(response.status);
     });
 

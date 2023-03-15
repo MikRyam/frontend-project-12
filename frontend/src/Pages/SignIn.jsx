@@ -11,7 +11,7 @@ import useAuth from '../hooks';
 import Loading from '../components/Loading';
 
 const SignIn = () => {
-  const inputRef = useRef();
+  const inputRef = useRef(null);
   const [authFailed, setAuthFailed] = useState(false);
   const navigate = useNavigate();
   const auth = useAuth();

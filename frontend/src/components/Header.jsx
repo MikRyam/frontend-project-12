@@ -4,11 +4,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 import routes from '../routes';
-import AuthButton from './AuthButton';
+import useAuth from '../hooks';
+import { Button } from 'react-bootstrap';
 
 const Header = () => {
+  const auth = useAuth();
   return (
-    // fixed="top"
     <Navbar
       collapseOnSelect
       expand="lg"
@@ -18,7 +19,7 @@ const Header = () => {
     >
       <Container>
         <NavLink className="navbar-brand" to={routes.homePagePath()}>
-          Chat App
+          Hexlet Chat
         </NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
@@ -26,16 +27,7 @@ const Header = () => {
           id="responsive-navbar-nav"
         >
           <Nav>
-            <NavLink className="nav-link" to={routes.aboutPagePath()}>
-              О проекте
-            </NavLink>
-            <NavLink className="nav-link" to={routes.loginPagePath()}>
-              Войти
-            </NavLink>
-            <NavLink className="nav-link" to={routes.signUpPagePath()}>
-              Зарегистрироваться
-            </NavLink>
-            <AuthButton />
+            {auth.loggedIn && <Button onClick={auth.logOut}>Выйти</Button>}
           </Nav>
         </Navbar.Collapse>
       </Container>
