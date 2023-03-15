@@ -3,11 +3,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import useAuth from './hooks';
 import './App.css';
 import Layout from './components/Layout';
-import Chat from './pages/Chat';
-import About from './pages/About';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import NotFoundPage from './pages/NotFoundPage';
+import Chat from './Pages/Chat';
+import About from './Pages/About';
+import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
+import NotFoundPage from './Pages/NotFoundPage';
 import routes from './routes';
 
 const PrivateRoute = ({ children }) => {

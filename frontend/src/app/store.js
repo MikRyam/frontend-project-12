@@ -3,11 +3,13 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { channelsApi } from '../features/channels/channelsApiSlice';
 import channelsReducer from '../features/channels/channelsSlice';
 import messagesReducer from '../features/messages/messagesSlice';
+import modalReducer from '../features/modal/modalSlice';
 
 export const store = configureStore({
   reducer: {
     channels: channelsReducer,
     messages: messagesReducer,
+    modal: modalReducer,
     // Add the generated reducer as a specific top-level slice
     [channelsApi.reducerPath]: channelsApi.reducer,
   },

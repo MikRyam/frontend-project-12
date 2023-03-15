@@ -42,7 +42,7 @@ const channelsSlice = createSlice({
       channelsApi.endpoints.getChannelsData.matchFulfilled,
       (state, { payload }) => {
         state.channels = payload.channels;
-        state.currentChannelId = payload.currentChannelId;
+        // state.currentChannelId = payload.currentChannelId;
       },
     );
   },

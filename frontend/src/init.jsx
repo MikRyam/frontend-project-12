@@ -6,6 +6,7 @@ import AuthProvider from './providers/AuthProvider';
 import SocketProvider from './providers/SocketProvider';
 import socketAPI from './socketIo/socketAPI';
 import AppRoutes from './AppRoutes';
+import ModalWindow from './components/Modals/Modal';
 
 const init = async (socket) => {
   return (
@@ -14,6 +15,7 @@ const init = async (socket) => {
         <Provider store={store}>
           <SocketProvider socket={socketAPI(socket)}>
             <AppRoutes />
+            <ModalWindow />
           </SocketProvider>
         </Provider>
       </AuthProvider>

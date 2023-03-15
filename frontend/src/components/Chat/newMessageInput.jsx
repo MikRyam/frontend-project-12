@@ -14,7 +14,7 @@ const NewMessageInput = () => {
 
   useEffect(() => {
     inputRef.current.focus();
-  }, []);
+  }, [currentChannelId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +57,7 @@ const NewMessageInput = () => {
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
             ref={inputRef}
+            autoFocus
           />
           <button
             type="submit"

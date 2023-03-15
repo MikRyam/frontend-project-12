@@ -1,15 +1,15 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
-import NewChannelButton from '../components/chat/newChannelButton';
-import ChannelsBar from '../components/chat/ChannelsBar';
-import ChannelHeader from '../components/chat/ChannelHeader';
-import MessagesBox from '../components/chat/MessagesBox';
-import NewMessageInput from '../components/chat/newMessageInput';
+import NewChannelButton from '../components/Chat/newChannelButton';
+import ChannelsBar from '../components/Chat/ChannelsBar';
+import ChannelHeader from '../components/Chat/ChannelHeader';
+import MessagesBox from '../components/Chat/MessagesBox';
+import NewMessageInput from '../components/Chat/newMessageInput';
 
 const Chat = () => {
   return (
-    <Container className="h-100 my-4 shadow text-center text-dark">
+    <Container className="h-100 my-4 overflow-hidden rounded shadow text-center text-dark">
       <Row className="h-100 bg-white d-flex flex-md-row overflow-hidden rounded">
         <Col
           xs={4}
