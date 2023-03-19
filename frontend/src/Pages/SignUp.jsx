@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import styles from './SignIn.module.css';
 import routes from '../routes';
 import useAuth from '../hooks';
@@ -62,18 +63,23 @@ const SignUp = () => {
         auth.logIn();
         setRegFailed(false);
         actions.setSubmitting(false);
+        toast.success(t('toastify.signUpSuccess'));
+        toast.success(t('toastify.signInSuccess'));
         navigate(routes.homePagePath());
       } catch (err) {
         actions.setSubmitting(false);
         if (!err.isAxiosError) {
           console.log(t('errors.unknown'));
+          toast.error(t('errors.unknown'));
           throw err;
         }
         if (err.response?.status === 409) {
           setRegFailed(true);
+          toast.error(t('signUp.signUpFailed'));
           inputRef.current.select();
         } else {
           console.log(t('errors.network'));
+          toast.error(t('errors.network'));
           throw err;
         }
         return values;

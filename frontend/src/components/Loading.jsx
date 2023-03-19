@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Loading = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <span
@@ -8,7 +10,7 @@ const Loading = () => {
         role="status"
         aria-hidden="true"
       ></span>
-      <span> Loading...</span>
+      <span>{t('loading')}</span>
     </div>
   );
 };

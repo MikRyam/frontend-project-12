@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { channelsApi } from './channelsApiSlice';
+import { toast } from 'react-toastify';
+import i18next from 'i18next';
 
 export const defaultChannel = 1;
 
@@ -14,6 +16,7 @@ const channelsSlice = createSlice({
   reducers: {
     addChannel: (state, action) => {
       state.channels.push(action.payload);
+      toast.success(i18next.t('toastify.channels.add'));
     },
     removeChannel: (state, action) => {
       state.channels = state.channels.filter(
@@ -22,6 +25,7 @@ const channelsSlice = createSlice({
       if (state.currentChannelId === action.payload) {
         state.currentChannelId = defaultChannel;
       }
+      toast.success(i18next.t('toastify.channels.delete'));
     },
     renameChannel: (state, action) => {
       state.channels = state.channels.map((channel) => {
@@ -31,6 +35,7 @@ const channelsSlice = createSlice({
           name: action.payload.name,
         };
       });
+      toast.success(i18next.t('toastify.channels.rename'));
     },
     setCurrentChannel: (state, action) => {
       state.currentChannelId = action.payload;
@@ -41,6 +46,7 @@ const channelsSlice = createSlice({
       channelsApi.endpoints.getChannelsData.matchFulfilled,
       (state, { payload }) => {
         state.channels = payload.channels;
+        toast.success(i18next.t('toastify.channels.channelsLoaded'));
         // state.currentChannelId = payload.currentChannelId;
       },
     );

@@ -79,12 +79,25 @@ const ruLocales = {
       unknown: 'Неизвестная ошибка',
       network: 'Ошибка сети',
     },
+    loading: 'Загрузка...',
     pageNotFound: {
       oops: 'Упс!',
       error: 'Извините, произошла непредвиденная ошибка',
       notFound: 'Страница не найдена.',
       noExist: 'Страница, которую вы ищете, не существует.',
       returnButton: 'Вернуться на главную',
+    },
+    toastify: {
+      channels: {
+        add: 'Канал создан',
+        rename: 'Канал переименован',
+        delete: 'Канал удалён',
+        channelsLoading: 'Загрузка каналов...',
+        channelsLoaded: 'Каналы загружены',
+        channelsNetworkError: 'Ошибка соединения',
+      },
+      signUpSuccess: 'Аккаунт создан',
+      signInSuccess: 'Вход выполнен',
     },
   },
 };

@@ -3,6 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { store } from './app/store';
 import AuthProvider from './providers/AuthProvider';
 import SocketProvider from './providers/SocketProvider';
@@ -26,6 +28,7 @@ const init = async (socket) => {
           <SocketProvider socket={socketAPI(socket)}>
             <AppRoutes />
             <ModalWindow />
+            <ToastContainer />
           </SocketProvider>
         </Provider>
       </AuthProvider>

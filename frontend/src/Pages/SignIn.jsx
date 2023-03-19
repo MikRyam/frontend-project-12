@@ -10,6 +10,7 @@ import styles from './SignIn.module.css';
 import routes from '../routes';
 import useAuth from '../hooks';
 import Loading from '../components/Loading';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
   const inputRef = useRef(null);
@@ -48,18 +49,22 @@ const SignIn = () => {
         auth.logIn();
         setAuthFailed(false);
         actions.setSubmitting(false);
+        toast.success(t('toastify.signInSuccess'));
         navigate(routes.homePagePath());
       } catch (err) {
         actions.setSubmitting(false);
         if (!err.isAxiosError) {
           console.log(t('errors.unknown'));
+          toast.error(t('errors.unknown'));
           throw err;
         }
         if (err.response?.status === 401) {
           setAuthFailed(true);
+          toast.error(t('signIn.signInFailed'));
           inputRef.current.select();
         } else {
           console.log(t('errors.network'));
+          toast.error(t('errors.network'));
           throw err;
         }
         return values;
