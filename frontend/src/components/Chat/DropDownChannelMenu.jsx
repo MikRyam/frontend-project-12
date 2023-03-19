@@ -1,9 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { openModal } from '../../features/modal/modalSlice';
 
 const DropDownChannelMenu = ({ channel }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const currentChannelId = useSelector(
     (state) => state.channels.currentChannelId,
   );
@@ -50,7 +52,7 @@ const DropDownChannelMenu = ({ channel }) => {
             className="dropdown-item"
             onClick={handleRemoveChannel}
           >
-            Удалить
+            {t('chat.DropDownChannelMenu.delete')}
           </button>
         </li>
         <li>
@@ -59,7 +61,7 @@ const DropDownChannelMenu = ({ channel }) => {
             className="dropdown-item"
             onClick={handleRenameChannel}
           >
-            Переименовать
+            {t('chat.DropDownChannelMenu.rename')}
           </button>
         </li>
       </ul>

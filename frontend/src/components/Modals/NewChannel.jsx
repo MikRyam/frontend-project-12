@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useFormik } from 'formik';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { closeModal } from '../../features/modal/modalSlice';
-import { useFormik } from 'formik';
 import { useSocket } from '../../hooks';
 import channelValidation from './channelValidation';
 
 const NewChannel = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const inputRef = useRef(null);
   const chatSocket = useSocket();
@@ -18,7 +20,7 @@ const NewChannel = () => {
     initialValues: {
       name: '',
     },
-    validationSchema: channelValidation(channelsNames),
+    validationSchema: channelValidation(channelsNames, t),
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(true);
@@ -51,7 +53,9 @@ const NewChannel = () => {
   return (
     <Modal animation centered show onHide={() => dispatch(closeModal())}>
       <Modal.Header closeButton>
-        <Modal.Title className="text-dark">Добавить канал</Modal.Title>
+        <Modal.Title className="text-dark">
+          {t('modals.addChannel.header')}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="text-dark">
         <Form id="genNewChannel" noValidate onSubmit={formik.handleSubmit}>
@@ -80,7 +84,7 @@ const NewChannel = () => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => dispatch(closeModal())}>
-          Отменить
+          {t('modals.addChannel.cancelButton')}
         </Button>
         <Button
           type="submit"
@@ -90,7 +94,7 @@ const NewChannel = () => {
             formik.errors.name || !formik.values.name || formik.isSubmitting
           }
         >
-          Отправить
+          {t('modals.addChannel.sendButton')}
         </Button>
       </Modal.Footer>
     </Modal>

@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSocket } from '../../hooks';
 import { useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { closeModal } from '../../features/modal/modalSlice';
 import { Button, Form, Modal } from 'react-bootstrap';
 import channelValidation from './channelValidation';
 
 const RenameChannel = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const inputRef = useRef(null);
   const chatSocket = useSocket();
@@ -23,7 +25,7 @@ const RenameChannel = () => {
     initialValues: {
       name: name,
     },
-    validationSchema: channelValidation(channelsNames),
+    validationSchema: channelValidation(channelsNames, t),
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(true);
@@ -56,7 +58,9 @@ const RenameChannel = () => {
   return (
     <Modal animation centered show onHide={() => dispatch(closeModal())}>
       <Modal.Header closeButton>
-        <Modal.Title className="text-dark">Переименовать канал</Modal.Title>
+        <Modal.Title className="text-dark">
+          {t('modals.renameChannel.header')}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="text-dark">
         <Form id="genNewChannel" noValidate onSubmit={formik.handleSubmit}>
@@ -84,7 +88,7 @@ const RenameChannel = () => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => dispatch(closeModal())}>
-          Отменить
+          {t('modals.renameChannel.cancelButton')}
         </Button>
         <Button
           type="submit"
@@ -94,7 +98,7 @@ const RenameChannel = () => {
             formik.errors.name || !formik.values.name || formik.isSubmitting
           }
         >
-          Отправить
+          {t('modals.renameChannel.sendButton')}
         </Button>
       </Modal.Footer>
     </Modal>

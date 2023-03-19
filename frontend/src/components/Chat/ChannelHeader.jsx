@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { useGetChannelsDataQuery } from '../../features/channels/channelsApiSlice';
 
 const ChannelHeader = () => {
+  const { t } = useTranslation();
   const { isLoading } = useGetChannelsDataQuery();
   const channels = useSelector((state) => state.channels.channels);
   const currentChannelId = useSelector(
@@ -31,7 +33,9 @@ const ChannelHeader = () => {
             <b># {currentChannel?.name}</b>
           </p>
           <span className="text-muted">
-            {`${channelMessages?.length ?? 'Нет'} сообщений`}
+            {t('chat.messages.counter.count', {
+              count: channelMessages?.length ?? 0,
+            })}
           </span>
         </>
       )}

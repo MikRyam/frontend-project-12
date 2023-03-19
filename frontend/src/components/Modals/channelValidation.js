@@ -1,12 +1,12 @@
 import * as yup from 'yup';
-const channelValidation = (channelsNames) =>
+const channelValidation = (channelsNames, t) =>
   yup.object().shape({
     name: yup
       .string()
       .trim()
-      .min(3, 'От 3 до 20 символов')
-      .max(20, 'От 3 до 20 символов')
-      .required('Обязательное поле')
-      .notOneOf([...channelsNames], 'Название канала должно быть уникальным'),
+      .min(3, t('modals.channelValidation.channelNameLength'))
+      .max(20, t('modals.channelValidation.channelNameLength'))
+      .required(t('modals.channelValidation.requiredField'))
+      .notOneOf([...channelsNames], t('modals.channelValidation.notUnique')),
   });
 export default channelValidation;

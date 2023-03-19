@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Card, Col, Row, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
@@ -12,6 +13,7 @@ import Loading from '../components/Loading';
 
 const SignUp = () => {
   const inputRef = useRef(null);
+  const { t } = useTranslation();
   const [regFailed, setRegFailed] = useState(false);
   const navigate = useNavigate();
   const auth = useAuth();
@@ -24,22 +26,22 @@ const SignUp = () => {
     username: yup
       .string()
       .trim()
-      .min(3, 'От 3 до 20 символов')
-      .max(20, 'От 3 до 20 символов')
+      .min(3, t('signUp.validation.usernameLength'))
+      .max(20, t('signUp.validation.usernameLength'))
       .typeError()
-      .required('Обязательное поле'),
+      .required(t('signUp.validation.requiredField')),
     password: yup
       .string()
       .trim()
-      .min(6, 'Не менее 6 символов')
-      .max(30, 'Не более 30 символов')
+      .min(6, t('signUp.validation.passwordLength'))
+      .max(30, t('signUp.validation.passwordLength'))
       .typeError()
-      .required('Обязательное поле'),
+      .required(t('signUp.validation.requiredField')),
     confirmPassword: yup
       .string()
       .test(
         'confirmPassword',
-        'Пароли должны совпадать',
+        t('signUp.validation.confirmPassword'),
         (password, context) => password === context.parent.password,
       ),
   });
@@ -64,14 +66,14 @@ const SignUp = () => {
       } catch (err) {
         actions.setSubmitting(false);
         if (!err.isAxiosError) {
-          console.log('неизвестная ошибка');
+          console.log(t('errors.unknown'));
           throw err;
         }
         if (err.response?.status === 409) {
           setRegFailed(true);
           inputRef.current.select();
         } else {
-          console.log('ошибка сети');
+          console.log(t('errors.network'));
           throw err;
         }
         return values;
@@ -85,11 +87,15 @@ const SignUp = () => {
         <Col xs={12} md={6} xxl={4} className="mt-5 mb-5">
           <Card className="shadow bg-light text-black">
             <Card.Body className="p-lg-4 p-xl-5">
-              <h1 className="mb-4 fw-light text-center">Вход</h1>
+              <h1 className="mb-4 fw-light text-center">
+                {t('signUp.pageHeader')}
+              </h1>
               <div className="pt-lg-3">
                 <Form onSubmit={formik.handleSubmit} noValidate>
                   <Form.Group className={styles.formGroup}>
-                    <Form.Label htmlFor="username">Имя пользователя</Form.Label>
+                    <Form.Label htmlFor="username">
+                      {t('signUp.usernameLabel')}
+                    </Form.Label>
                     <Form.Control
                       onChange={formik.handleChange}
                       value={formik.values.username}
@@ -110,7 +116,9 @@ const SignUp = () => {
                     </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group className={styles.formGroup}>
-                    <Form.Label htmlFor="password">Пароль</Form.Label>
+                    <Form.Label htmlFor="password">
+                      {t('signUp.passwordLabel')}
+                    </Form.Label>
                     <Form.Control
                       onChange={formik.handleChange}
                       value={formik.values.password}
@@ -132,7 +140,9 @@ const SignUp = () => {
                     </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group className={styles.formGroup}>
-                    <Form.Label htmlFor="confirmPassword">Пароль</Form.Label>
+                    <Form.Label htmlFor="confirmPassword">
+                      {t('signUp.confirmPasswordLabel')}
+                    </Form.Label>
                     <Form.Control
                       onChange={formik.handleChange}
                       value={formik.values.confirmPassword}
@@ -152,7 +162,7 @@ const SignUp = () => {
 
                     <Form.Control.Feedback type="invalid">
                       {formik.errors.confirmPassword ||
-                        'Такой пользователь уже существует'}
+                        t('signUp.signUpFailed')}
                     </Form.Control.Feedback>
                   </Form.Group>
 
@@ -174,7 +184,7 @@ const SignUp = () => {
                     {formik.isSubmitting ? (
                       <Loading />
                     ) : (
-                      <span>Зарегистрироваться</span>
+                      <span>{t('signUp.registerButton')}</span>
                     )}
                   </Button>
                 </Form>
@@ -182,9 +192,11 @@ const SignUp = () => {
             </Card.Body>
             <Card.Footer className="border-top-0 text-center py-3 bg-light">
               <div className="py-lg-2 d-flex justify-content-center gap-3">
-                <span className="text-muted">Уже есть аккаунт?</span>
+                <span className="text-muted">
+                  {t('signUp.footer.signInHeader')}
+                </span>
                 <Link className="link-dark" to="/login">
-                  Войти
+                  {t('signUp.footer.signIn')}
                 </Link>
               </div>
             </Card.Footer>
