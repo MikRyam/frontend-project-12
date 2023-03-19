@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import leoProfanity from 'leo-profanity';
 import useAuth, { useSocket } from '../../hooks';
 import { BsSendFill } from 'react-icons/bs';
 
@@ -21,7 +22,7 @@ const NewMessageInput = () => {
     if (text.trim().length) {
       const message = {
         channelId: currentChannelId,
-        body: text,
+        body: leoProfanity.clean(text),
         username: auth.username,
         date: new Date().toLocaleString([], {
           dateStyle: 'long',

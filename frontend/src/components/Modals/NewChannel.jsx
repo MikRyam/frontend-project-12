@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
+import leoProfanity from 'leo-profanity';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { closeModal } from '../../features/modal/modalSlice';
 import { useSocket } from '../../hooks';
@@ -24,7 +25,10 @@ const NewChannel = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(true);
-        const data = { ...values, name: values.name.trim() };
+        const data = {
+          ...values,
+          name: leoProfanity.clean(values.name.trim()),
+        };
         console.log('data: ', data);
         await chatSocket.addNewChannel(data);
         setNewNameFailed(false);
