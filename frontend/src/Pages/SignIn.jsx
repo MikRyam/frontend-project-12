@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Card, Col, Row, Form, Button } from 'react-bootstrap';
+import {
+  Card,
+  Col,
+  Row,
+  Form,
+  Button
+} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';

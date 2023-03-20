@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
@@ -74,7 +75,7 @@ const RenameChannel = () => {
               name="name"
               type="name"
               ref={inputRef}
-              // autoComplete="name"
+              autoComplete="name"
               placeholder="Введите название канала..."
               required
               onKeyDown={(e) => handleKeyDown(e)}
