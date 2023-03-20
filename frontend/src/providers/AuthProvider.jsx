@@ -12,13 +12,13 @@ const AuthProvider = ({ children }) => {
     setLoggedIn(false);
   };
 
-  const AuthProviderValue = useMemo(() => (
-    { loggedIn, logIn, logOut, username }
-  ), [loggedIn, logIn, logOut, username]);
+  // const AuthProviderValue = useMemo(() => (
+  //   { loggedIn, logIn, logOut, username }
+  // ), [loggedIn, logIn, logOut, username]);
 
   return (
-    // <AuthContext.Provider value={{ loggedIn, logIn, logOut, username }}>
-    <AuthContext.Provider value={AuthProviderValue}>
+    <AuthContext.Provider value={{ loggedIn, logIn, logOut, username }}>
+    {/*<AuthContext.Provider value={AuthProviderValue}>*/}
       {children}
     </AuthContext.Provider>
   );
