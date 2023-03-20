@@ -65,7 +65,11 @@ const NewChannel = () => {
       <Modal.Body className="text-dark">
         <Form id="genNewChannel" noValidate onSubmit={formik.handleSubmit}>
           <Form.Group>
+            <Form.Label htmlFor="name" className="visually-hidden">
+              {t('modals.addChannel.label')}
+            </Form.Label>
             <Form.Control
+              id="name"
               name="name"
               type="name"
               ref={inputRef}

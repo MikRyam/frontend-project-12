@@ -28,6 +28,7 @@ const NewChannelButton = () => {
         onClick={handleGenNewChannel}
       >
         <BsPlusSquare size="1.4rem" />
+        <span className="visually-hidden">+</span>
       </button>
     </div>
   );

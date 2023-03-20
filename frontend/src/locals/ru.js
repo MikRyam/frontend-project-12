@@ -62,11 +62,13 @@ const ruLocales = {
       },
       renameChannel: {
         header: 'Переименовать канал',
+        label: 'Управление каналом',
         sendButton: 'Отправить',
         cancelButton: 'Отменить',
       },
       addChannel: {
         header: 'Добавить канал',
+        label: 'Имя канала',
         sendButton: 'Отправить',
         cancelButton: 'Отменить',
       },
