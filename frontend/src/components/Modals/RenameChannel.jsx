@@ -73,7 +73,7 @@ const RenameChannel = () => {
               name="name"
               type="name"
               ref={inputRef}
-              autoComplete="name"
+              // autoComplete="name"
               placeholder="Введите название канала..."
               required
               onKeyDown={(e) => handleKeyDown(e)}
@@ -81,7 +81,9 @@ const RenameChannel = () => {
               value={formik.values.name}
               onBlur={formik.handleBlur}
               isInvalid={
-                (formik.touched.name && formik.errors.name) || editNameFailed
+                (formik.touched.name
+                  && formik.errors.name)
+                || editNameFailed
               }
             />
             <Form.Control.Feedback type="invalid">
