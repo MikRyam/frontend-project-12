@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import i18next from 'i18next';

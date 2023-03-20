@@ -102,10 +102,9 @@ const RenameChannel = () => {
           form="genNewChannel"
           variant="primary"
           disabled={
-            // formik.errors.name
-            // || !formik.values.name
-            // ||
-            formik.isSubmitting
+            formik.errors.name
+            || !formik.values.name
+            || formik.isSubmitting
           }
         >
           {t('modals.renameChannel.sendButton')}
