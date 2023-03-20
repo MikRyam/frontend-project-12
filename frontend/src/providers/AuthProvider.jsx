@@ -6,19 +6,24 @@ const AuthProvider = ({ children }) => {
   const username = currentUser ? currentUser.username : null;
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const logIn = () => setLoggedIn(true);
-  const logOut = () => {
-    localStorage.removeItem('userId');
-    setLoggedIn(false);
-  };
+  // const logIn = () => setLoggedIn(true);
+  // const logOut = () => {
+  //   localStorage.removeItem('userId');
+  //   setLoggedIn(false);
+  // };
 
-  // const AuthProviderValue = useMemo(() => (
-  //   { loggedIn, logIn, logOut, username }
-  // ), [loggedIn, logIn, logOut, username]);
+  const AuthProviderValue = useMemo(() => {
+    const logIn = () => setLoggedIn(true);
+    const logOut = () => {
+      localStorage.removeItem('userId');
+      setLoggedIn(false);
+    };
+    return { loggedIn, logIn, logOut, username };
+  }, [loggedIn, username]);
 
   return (
-    <AuthContext.Provider value={{ loggedIn, logIn, logOut, username }}>
-    {/*<AuthContext.Provider value={AuthProviderValue}>*/}
+    // <AuthContext.Provider value={{ loggedIn, logIn, logOut, username }}>
+    <AuthContext.Provider value={AuthProviderValue}>
       {children}
     </AuthContext.Provider>
   );
