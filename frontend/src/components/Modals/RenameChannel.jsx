@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSocket } from '../../hooks';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { closeModal } from '../../features/modal/modalSlice';
 import { Button, Form, Modal } from 'react-bootstrap';
+import { useSocket } from '../../hooks';
+import { closeModal } from '../../features/modal/modalSlice';
 import channelValidation from './channelValidation';
 
 const RenameChannel = () => {
@@ -23,7 +23,7 @@ const RenameChannel = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: name,
+      name,
     },
     validationSchema: channelValidation(channelsNames, t),
     onSubmit: async (values, actions) => {
@@ -35,6 +35,7 @@ const RenameChannel = () => {
         setEditNameFailed(false);
         actions.setSubmitting(false);
         dispatch(closeModal());
+        return values;
       } catch (err) {
         actions.setSubmitting(false);
         if (err.response?.status === 401) {

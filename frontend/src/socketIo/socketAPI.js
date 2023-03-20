@@ -24,35 +24,31 @@ const socketAPI = (socket) => {
     store.dispatch(renameChannel({ id, name }));
   });
 
-  const addNewMessage = (message) =>
-    socket.emit('newMessage', message, (response) => {
-      if (response.status !== 'ok') {
-        console.log(response.status);
-      }
-    });
-
-  const addNewChannel = (channel) =>
-    socket.emit('newChannel', channel, (response) => {
-      if (response.status === 'ok') {
-        const { id } = response.data;
-        store.dispatch(setCurrentChannel(id));
-      }
+  const addNewMessage = (message) => socket.emit('newMessage', message, (response) => {
+    if (response.status !== 'ok') {
       console.log(response.status);
-    });
+    }
+  });
 
-  const deleteChannel = (id) =>
-    socket.emit('removeChannel', { id }, (response) => {
-      if (response.status !== 'ok') {
-        console.log(response.status);
-      }
-    });
+  const addNewChannel = (channel) => socket.emit('newChannel', channel, (response) => {
+    if (response.status === 'ok') {
+      const { id } = response.data;
+      store.dispatch(setCurrentChannel(id));
+    }
+    console.log(response.status);
+  });
 
-  const updateChannel = (channel) =>
-    socket.emit('renameChannel', channel, (response) => {
-      if (response.status !== 'ok') {
-        console.log(response.status);
-      }
-    });
+  const deleteChannel = (id) => socket.emit('removeChannel', { id }, (response) => {
+    if (response.status !== 'ok') {
+      console.log(response.status);
+    }
+  });
+
+  const updateChannel = (channel) => socket.emit('renameChannel', channel, (response) => {
+    if (response.status !== 'ok') {
+      console.log(response.status);
+    }
+  });
 
   return {
     addNewMessage,

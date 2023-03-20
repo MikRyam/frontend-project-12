@@ -4,9 +4,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import routes from '../routes';
 import useAuth from '../hooks';
-import { Button } from 'react-bootstrap';
 
 const Header = () => {
   const { t } = useTranslation();

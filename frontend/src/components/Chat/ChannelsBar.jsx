@@ -1,8 +1,8 @@
 import React from 'react';
-import { useGetChannelsDataQuery } from '../../features/channels/channelsApiSlice';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { useGetChannelsDataQuery } from '../../features/channels/channelsApiSlice';
 import ChannelItem from './ChannelItem';
 import Loading from '../Loading';
 
@@ -27,8 +27,8 @@ const ChannelsBar = () => {
 
   return (
     <ul className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
-      {channels &&
-        channels.map((channel) => (
+      {channels
+        && channels.map((channel) => (
           <ChannelItem key={channel.id} channel={channel} />
         ))}
     </ul>

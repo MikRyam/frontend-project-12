@@ -27,8 +27,8 @@ const MessagesBox = () => {
         id="messages-box"
         className="chat-messages px-5 d-flex flex-column justify-content-end text-start"
       >
-        {channelMessages &&
-          channelMessages.map(({ id, body, date, username }) => (
+        {channelMessages
+          && channelMessages.map(({ id, body, date, username }) => (
             <MessageItem key={id} body={body} username={username} date={date} />
           ))}
         <div ref={lastMessageRef} />

@@ -9,7 +9,6 @@ export const channelsApi = createApi({
       const userId = JSON.parse(localStorage.getItem('user'));
       const { token } = userId;
       // const token = getState().auth.token
-
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }
@@ -18,7 +17,7 @@ export const channelsApi = createApi({
   }),
   endpoints: (builder) => ({
     getChannelsData: builder.query({
-      query: () => `data`,
+      query: () => 'data',
     }),
   }),
 });

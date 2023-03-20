@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { channelsApi } from './channelsApiSlice';
 import { toast } from 'react-toastify';
 import i18next from 'i18next';
+import { channelsApi } from './channelsApiSlice';
 
 export const defaultChannel = 1;
 
@@ -53,7 +53,11 @@ const channelsSlice = createSlice({
   },
 });
 
-export const { addChannel, removeChannel, renameChannel, setCurrentChannel } =
-  channelsSlice.actions;
+export const {
+  addChannel,
+  removeChannel,
+  renameChannel,
+  setCurrentChannel,
+} = channelsSlice.actions;
 
 export default channelsSlice.reducer;

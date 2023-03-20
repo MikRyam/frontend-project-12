@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import styles from './SignIn.module.css';
 import routes from '../routes';
 import useAuth from '../hooks';
 import Loading from '../components/Loading';
-import { toast } from 'react-toastify';
 
 const SignIn = () => {
   const inputRef = useRef(null);
@@ -51,6 +51,7 @@ const SignIn = () => {
         actions.setSubmitting(false);
         toast.success(t('toastify.signInSuccess'));
         navigate(routes.homePagePath());
+        return values;
       } catch (err) {
         actions.setSubmitting(false);
         if (!err.isAxiosError) {
@@ -91,14 +92,14 @@ const SignIn = () => {
                       onChange={formik.handleChange}
                       value={formik.values.username}
                       onBlur={formik.handleBlur}
-                      className={`form-input bg-light text-black`}
+                      className="form-input bg-light text-black"
                       name="username"
                       id="username"
                       autoComplete="username"
                       required
                       isInvalid={
-                        (formik.touched.username && formik.errors.username) ||
-                        authFailed
+                        (formik.touched.username && formik.errors.username)
+                        || authFailed
                       }
                       ref={inputRef}
                     />
@@ -121,8 +122,8 @@ const SignIn = () => {
                       autoComplete="password"
                       required
                       isInvalid={
-                        (formik.touched.password && formik.errors.password) ||
-                        authFailed
+                        (formik.touched.password && formik.errors.password)
+                        || authFailed
                       }
                     />
 
@@ -137,11 +138,11 @@ const SignIn = () => {
                     className="w-100 pb-2 pt-2 mt-5"
                     data-disable-with="Войти"
                     disabled={
-                      formik.errors.username ||
-                      formik.errors.password ||
-                      !formik.values.username ||
-                      !formik.values.password ||
                       formik.isSubmitting
+                      || formik.errors.username
+                      || formik.errors.password
+                      || !formik.values.username
+                      || !formik.values.password
                     }
                   >
                     {formik.isSubmitting ? (

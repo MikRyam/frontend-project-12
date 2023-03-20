@@ -9,7 +9,7 @@ const Loading = () => {
         className="spinner-border spinner-border-sm"
         role="status"
         aria-hidden="true"
-      ></span>
+      />
       <span>{t('loading')}</span>
     </div>
   );

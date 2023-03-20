@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { closeModal } from '../../features/modal/modalSlice';
 import { Button, Modal } from 'react-bootstrap';
+import { closeModal } from '../../features/modal/modalSlice';
 import { useSocket } from '../../hooks';
 
 const DeleteConfirmation = () => {
@@ -11,7 +11,7 @@ const DeleteConfirmation = () => {
   const chatSocket = useSocket();
   const { id } = useSelector((state) => state.modal.item);
 
-  const handleChannelDelete = async (id) => {
+  const handleChannelDelete = async () => {
     await chatSocket.deleteChannel(id);
     dispatch(closeModal());
   };
@@ -33,7 +33,7 @@ const DeleteConfirmation = () => {
         <Button
           type="button"
           variant="danger"
-          onClick={() => handleChannelDelete(id)}
+          onClick={handleChannelDelete}
         >
           {t('modals.confirmation.confirmDeleteButton')}
         </Button>

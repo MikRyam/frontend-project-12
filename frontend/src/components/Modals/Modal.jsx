@@ -10,13 +10,13 @@ const modals = {
   confirmDelete: DeleteConfirmation,
 };
 
-function ModalWindow() {
+const ModalWindow = () => {
   const modalType = useSelector((state) => state.modal.type);
   const Modal = modals[modalType];
   if (!Modal) {
     return null;
   }
   return <Modal />;
-}
+};
 
 export default ModalWindow;

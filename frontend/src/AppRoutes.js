@@ -15,24 +15,22 @@ const PrivateRoute = ({ children }) => {
   return auth.loggedIn ? children : <Navigate to={routes.loginPagePath()} />;
 };
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={
-            <PrivateRoute>
-              <Chat />
-            </PrivateRoute>
-          }
-        />
-        <Route path="login" element={<SignIn />} />
-        <Route path="signup" element={<SignUp />} />
-      </Route>
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  );
-};
+const AppRoutes = () => (
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route
+        index
+        element={(
+          <PrivateRoute>
+            <Chat />
+          </PrivateRoute>
+        )}
+      />
+      <Route path="login" element={<SignIn />} />
+      <Route path="signup" element={<SignUp />} />
+    </Route>
+    <Route path="*" element={<NotFoundPage />} />
+  </Routes>
+);
 
 export default AppRoutes;

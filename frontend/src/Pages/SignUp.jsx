@@ -34,8 +34,8 @@ const SignUp = () => {
     password: yup
       .string()
       .trim()
-      .min(6, t('signUp.validation.passwordLength'))
-      .max(30, t('signUp.validation.passwordLength'))
+      .min(6, t('signUp.validation.passwordMinLength'))
+      .max(30, t('signUp.validation.passwordMaxLength'))
       .typeError()
       .required(t('signUp.validation.requiredField')),
     confirmPassword: yup
@@ -66,6 +66,7 @@ const SignUp = () => {
         toast.success(t('toastify.signUpSuccess'));
         toast.success(t('toastify.signInSuccess'));
         navigate(routes.homePagePath());
+        return values;
       } catch (err) {
         actions.setSubmitting(false);
         if (!err.isAxiosError) {
@@ -106,14 +107,14 @@ const SignUp = () => {
                       onChange={formik.handleChange}
                       value={formik.values.username}
                       onBlur={formik.handleBlur}
-                      className={`form-input bg-light text-black`}
+                      className="form-input bg-light text-black"
                       name="username"
                       id="username"
                       autoComplete="username"
                       required
                       isInvalid={
-                        (formik.touched.username && formik.errors.username) ||
-                        regFailed
+                        (formik.touched.username && formik.errors.username)
+                        || regFailed
                       }
                       ref={inputRef}
                     />
@@ -136,8 +137,8 @@ const SignUp = () => {
                       autoComplete="new-password"
                       required
                       isInvalid={
-                        (formik.touched.password && formik.errors.password) ||
-                        regFailed
+                        (formik.touched.password && formik.errors.password)
+                        || regFailed
                       }
                     />
 
@@ -160,15 +161,14 @@ const SignUp = () => {
                       autoComplete="new-password"
                       required
                       isInvalid={
-                        (formik.touched.confirmPassword &&
-                          formik.errors.confirmPassword) ||
-                        regFailed
+                        (formik.touched.confirmPassword
+                          && formik.errors.confirmPassword)
+                        || regFailed
                       }
                     />
-
                     <Form.Control.Feedback type="invalid">
-                      {formik.errors.confirmPassword ||
-                        t('signUp.signUpFailed')}
+                      {formik.errors.confirmPassword
+                        || t('signUp.signUpFailed')}
                     </Form.Control.Feedback>
                   </Form.Group>
 
@@ -178,13 +178,13 @@ const SignUp = () => {
                     className="w-100 pb-2 pt-2 mt-5"
                     data-disable-with="Зарегистрироваться"
                     disabled={
-                      formik.errors.username ||
-                      formik.errors.password ||
-                      formik.errors.confirmPassword ||
-                      !formik.values.username ||
-                      !formik.values.password ||
-                      !formik.values.confirmPassword ||
                       formik.isSubmitting
+                      || formik.errors.username
+                      || formik.errors.password
+                      || formik.errors.confirmPassword
+                      || !formik.values.username
+                      || !formik.values.password
+                      || !formik.values.confirmPassword
                     }
                   >
                     {formik.isSubmitting ? (

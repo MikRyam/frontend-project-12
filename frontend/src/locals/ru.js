@@ -4,7 +4,7 @@ const ruLocales = {
       pageHeader: 'Регистрация',
       usernameLabel: 'Имя пользователя',
       passwordLabel: 'Пароль',
-      confirmPasswordLabel: 'Подтвердить пароль',
+      confirmPasswordLabel: 'Подтвердите пароль',
       registerButton: 'Зарегистрироваться',
       signUpFailed: 'Такой пользователь уже существует',
       footer: {
@@ -14,19 +14,20 @@ const ruLocales = {
       validation: {
         requiredField: 'Обязательное поле',
         usernameLength: 'От 3 до 20 символов',
-        passwordLength: 'от 6 до 30 символов',
+        passwordMinLength: 'Не менее 6 символов',
+        passwordMaxLength: 'Не более 30 символов',
         confirmPassword: 'Пароли должны совпадать',
       },
     },
     signIn: {
-      pageHeader: 'Вход',
-      usernameLabel: 'Имя пользователя',
+      pageHeader: 'Войти',
+      usernameLabel: 'Ваш ник',
       passwordLabel: 'Пароль',
       loginButton: 'Войти',
-      signInFailed: 'Неверный пароль или имя пользователя',
+      signInFailed: 'Неверные имя пользователя или пароль',
       footer: {
         signUpHeader: 'Нет аккаунта? ',
-        signUp: 'Создать аккаунт',
+        signUp: 'Регистрация',
       },
       validation: {
         requiredField: 'Обязательное поле',

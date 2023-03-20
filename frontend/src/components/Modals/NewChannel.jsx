@@ -34,6 +34,7 @@ const NewChannel = () => {
         setNewNameFailed(false);
         actions.setSubmitting(false);
         dispatch(closeModal());
+        return values;
       } catch (err) {
         actions.setSubmitting(false);
         if (err.response?.status === 401) {

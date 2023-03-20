@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import leoProfanity from 'leo-profanity';
-import useAuth, { useSocket } from '../../hooks';
 import { BsSendFill } from 'react-icons/bs';
+import useAuth, { useSocket } from '../../hooks';
 
 const NewMessageInput = () => {
   const [text, setText] = useState('');
@@ -58,7 +58,7 @@ const NewMessageInput = () => {
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
             ref={inputRef}
-            autoFocus
+            // autoFocus
           />
           <button
             type="submit"
