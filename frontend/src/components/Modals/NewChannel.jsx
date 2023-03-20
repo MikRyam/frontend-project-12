@@ -69,6 +69,7 @@ const NewChannel = () => {
               {t('modals.addChannel.label')}
             </Form.Label>
             <Form.Control
+              id="name"
               name="name"
               type="name"
               ref={inputRef}
