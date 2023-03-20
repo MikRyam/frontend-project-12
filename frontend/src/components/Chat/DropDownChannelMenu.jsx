@@ -40,7 +40,7 @@ const DropDownChannelMenu = ({ channel }) => {
         aria-expanded="false"
         data-bs-reference="parent"
       >
-        <span className="visually-hidden">Управление каналом</span>
+        <span className="visually-hidden">{t('chat.DropDownChannelMenu.label')}</span>
       </button>
       <ul
         className="dropdown-menu dropdown-menu-end rounded-0"

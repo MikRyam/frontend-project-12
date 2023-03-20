@@ -42,6 +42,7 @@ const ruLocales = {
     chat: {
       header: 'Каналы',
       DropDownChannelMenu: {
+        label: 'Управление каналом',
         delete: 'Удалить',
         rename: 'Переименовать',
       },
@@ -62,7 +63,7 @@ const ruLocales = {
       },
       renameChannel: {
         header: 'Переименовать канал',
-        label: 'Управление каналом',
+        label: 'Имя канала',
         sendButton: 'Отправить',
         cancelButton: 'Отменить',
       },
