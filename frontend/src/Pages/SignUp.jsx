@@ -179,12 +179,12 @@ const SignUp = () => {
                     data-disable-with="Зарегистрироваться"
                     disabled={
                       formik.isSubmitting
-                      || formik.errors.username
-                      || formik.errors.password
-                      || formik.errors.confirmPassword
-                      || !formik.values.username
-                      || !formik.values.password
-                      || !formik.values.confirmPassword
+                      // || formik.errors.username
+                      // || formik.errors.password
+                      // || formik.errors.confirmPassword
+                      // || !formik.values.username
+                      // || !formik.values.password
+                      // || !formik.values.confirmPassword
                     }
                   >
                     {formik.isSubmitting ? (

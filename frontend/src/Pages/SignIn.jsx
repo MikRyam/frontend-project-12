@@ -139,10 +139,10 @@ const SignIn = () => {
                     data-disable-with="Войти"
                     disabled={
                       formik.isSubmitting
-                      || formik.errors.username
-                      || formik.errors.password
-                      || !formik.values.username
-                      || !formik.values.password
+                      // || formik.errors.username
+                      // || formik.errors.password
+                      // || !formik.values.username
+                      // || !formik.values.password
                     }
                   >
                     {formik.isSubmitting ? (

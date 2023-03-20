@@ -5,11 +5,11 @@
 ### [Chat App](https://frontend-project-12-production-241a.up.railway.app/)
 
 
-## Setup
+### Setup
 
-### `make install`
+`make install`
 
 
-## Getting Started
+### Getting Started
 
-### `make start`
+`make start`
