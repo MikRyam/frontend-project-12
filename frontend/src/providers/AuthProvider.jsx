@@ -18,7 +18,12 @@ const AuthProvider = ({ children }) => {
       localStorage.removeItem('userId');
       setLoggedIn(false);
     };
-    return { loggedIn, logIn, logOut, username };
+    return {
+      loggedIn,
+      logIn,
+      logOut,
+      username,
+    };
   }, [loggedIn, username]);
 
   return (

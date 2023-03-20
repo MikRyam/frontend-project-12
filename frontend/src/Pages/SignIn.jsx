@@ -5,7 +5,7 @@ import {
   Col,
   Row,
   Form,
-  Button
+  Button,
 } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

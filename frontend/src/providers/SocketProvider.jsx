@@ -6,7 +6,7 @@ const SocketProvider = ({ socket, children }) => {
     addNewMessage,
     addNewChannel,
     deleteChannel,
-    updateChannel
+    updateChannel,
   } = socket;
 
   const SocketProviderValue = useMemo(() => (
@@ -14,7 +14,7 @@ const SocketProvider = ({ socket, children }) => {
       addNewMessage,
       addNewChannel,
       deleteChannel,
-      updateChannel
+      updateChannel,
     }
   ), [addNewMessage, addNewChannel, deleteChannel, updateChannel]);
 

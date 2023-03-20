@@ -7,7 +7,7 @@ import leoProfanity from 'leo-profanity';
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import store from './app/store';
+import { store } from './app/store';
 import AuthProvider from './providers/AuthProvider';
 import SocketProvider from './providers/SocketProvider';
 import socketAPI from './socketIo/socketAPI';
