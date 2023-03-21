@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { io } from 'socket.io-client';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import leoProfanity from 'leo-profanity';
@@ -15,13 +16,15 @@ import AppRoutes from './AppRoutes';
 import ModalWindow from './components/Modals/Modal';
 import resources from './locals/locals';
 
-const init = async (socket) => {
+const init = async () => {
   const defaultLanguage = 'ru';
   await i18next.use(initReactI18next).init({
     lng: defaultLanguage,
     debug: false,
     resources,
   });
+
+  const socket = io();
 
   leoProfanity.clearList();
   leoProfanity.add(leoProfanity.getDictionary('en'));

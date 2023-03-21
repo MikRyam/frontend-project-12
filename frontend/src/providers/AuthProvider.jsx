@@ -6,16 +6,11 @@ const AuthProvider = ({ children }) => {
   const username = currentUser ? currentUser.username : null;
 
   const [loggedIn, setLoggedIn] = useState(false);
-  // const logIn = () => setLoggedIn(true);
-  // const logOut = () => {
-  //   localStorage.removeItem('userId');
-  //   setLoggedIn(false);
-  // };
 
   const AuthProviderValue = useMemo(() => {
     const logIn = () => setLoggedIn(true);
     const logOut = () => {
-      localStorage.removeItem('userId');
+      localStorage.removeItem('user');
       setLoggedIn(false);
     };
     return {
