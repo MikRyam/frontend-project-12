@@ -11,14 +11,7 @@ const ChannelsBar = () => {
   const { error, isLoading } = useGetChannelsDataQuery();
   const channels = useSelector((state) => state.channels.channels);
 
-  if (channels) {
-    console.log('channels: ', channels);
-  }
-
-  if (isLoading) {
-    toast.info(t('toastify.channels.channelsLoading'));
-    return <Loading />;
-  }
+  if (isLoading) return <Loading />;
 
   if (error) {
     toast.error(t('toastify.channels.channelsNetworkError'));

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Button, Modal } from 'react-bootstrap';
 import { closeModal } from '../../features/modal/modalSlice';
-import { useSocket } from '../../hooks';
+import useSocket from '../../hooks/useSocket';
 
 const DeleteConfirmation = () => {
   const { t } = useTranslation();
@@ -16,8 +16,12 @@ const DeleteConfirmation = () => {
     dispatch(closeModal());
   };
 
+  const handleClose = () => {
+    dispatch(closeModal());
+  };
+
   return (
-    <Modal animation centered show onHide={() => dispatch(closeModal())}>
+    <Modal animation centered show onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title className="text-dark">
           {t('modals.confirmation.header')}
@@ -27,7 +31,7 @@ const DeleteConfirmation = () => {
         <p>{t('modals.confirmation.sure')}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => dispatch(closeModal())}>
+        <Button variant="secondary" onClick={handleClose}>
           {t('modals.confirmation.cancelButton')}
         </Button>
         <Button

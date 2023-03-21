@@ -3,8 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { Button, Form, Modal } from 'react-bootstrap';
-import { useSocket } from '../../hooks';
+import useSocket from '../../hooks/useSocket';
 import { closeModal } from '../../features/modal/modalSlice';
 import channelValidation from './channelValidation';
 
@@ -31,7 +32,6 @@ const RenameChannel = () => {
       try {
         actions.setSubmitting(true);
         const data = { ...values, name: values.name.trim(), id };
-        console.log('dataEdit: ', data);
         await chatSocket.updateChannel(data);
         setEditNameFailed(false);
         actions.setSubmitting(false);
@@ -43,7 +43,7 @@ const RenameChannel = () => {
           setEditNameFailed(true);
           inputRef.current.select();
         } else {
-          console.log('ошибка сети');
+          toast.error(t('errors.network'));
           throw err;
         }
         return values;
@@ -57,8 +57,12 @@ const RenameChannel = () => {
     }
   };
 
+  const handleClose = () => {
+    dispatch(closeModal());
+  };
+
   return (
-    <Modal animation centered show onHide={() => dispatch(closeModal())}>
+    <Modal animation centered show onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title className="text-dark">
           {t('modals.renameChannel.header')}
@@ -95,7 +99,7 @@ const RenameChannel = () => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => dispatch(closeModal())}>
+        <Button variant="secondary" onClick={handleClose}>
           {t('modals.renameChannel.cancelButton')}
         </Button>
         <Button

@@ -34,8 +34,9 @@ const socketAPI = (socket) => {
     if (response.status === 'ok') {
       const { id } = response.data;
       store.dispatch(setCurrentChannel(id));
+    } else if (response.status !== 'ok') {
+      console.log(response.status);
     }
-    console.log(response.status);
   });
 
   const deleteChannel = (id) => socket.emit('removeChannel', { id }, (response) => {

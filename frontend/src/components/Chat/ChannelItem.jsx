@@ -10,6 +10,10 @@ const ChannelItem = ({ channel }) => {
   );
   const dispatch = useDispatch();
 
+  const handleClick = () => {
+    dispatch(setCurrentChannel(id));
+  };
+
   return (
     <li className="nav-item w-100">
       <div role="group" className="d-flex dropdown btn-group">
@@ -18,7 +22,7 @@ const ChannelItem = ({ channel }) => {
           className={`w-100 rounded-0 text-start text-truncate btn ${
             currentChannelId === id ? 'btn-secondary' : ''
           }`}
-          onClick={() => dispatch(setCurrentChannel(id))}
+          onClick={handleClick}
         >
           <span className="me-1">#</span>
           {name}

@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import i18next from 'i18next';
@@ -49,7 +48,6 @@ const channelsSlice = createSlice({
       (state, { payload }) => {
         state.channels = payload.channels;
         toast.success(i18next.t('toastify.channels.channelsLoaded'));
-        // state.currentChannelId = payload.currentChannelId;
       },
     );
   },

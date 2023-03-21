@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-
 import { createSlice } from '@reduxjs/toolkit';
 import { channelsApi } from '../channels/channelsApiSlice';
 import { removeChannel } from '../channels/channelsSlice';

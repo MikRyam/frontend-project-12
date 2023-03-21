@@ -16,10 +16,6 @@ const ChannelHeader = () => {
     ({ channelId }) => channelId === currentChannelId,
   );
 
-  if (messages) {
-    console.log('messages: ', messages);
-  }
-
   return (
     <div className="bg-light mb-4 p-3 shadow-sm small text-start">
       {isLoading ? (
@@ -31,7 +27,7 @@ const ChannelHeader = () => {
         <>
           <p className="m-0">
             <b>
-              #
+              #&nbsp;
               {currentChannel?.name}
             </b>
           </p>

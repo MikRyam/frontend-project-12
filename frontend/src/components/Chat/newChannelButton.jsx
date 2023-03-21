@@ -8,8 +8,6 @@ const NewChannelButton = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  // () => dispatch(openModal(id))
-
   const handleGenNewChannel = () => {
     dispatch(
       openModal({

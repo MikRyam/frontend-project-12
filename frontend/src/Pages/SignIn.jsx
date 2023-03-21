@@ -15,7 +15,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import styles from './SignIn.module.css';
 import routes from '../routes';
-import useAuth from '../hooks';
+import useAuth from '../hooks/useAuth';
 import Loading from '../components/Loading';
 
 const SignIn = () => {
@@ -49,7 +49,6 @@ const SignIn = () => {
     onSubmit: async (values, actions) => {
       try {
         actions.setSubmitting(true);
-        console.log(values);
         const response = await axios.post(routes.loginPath(), values);
         localStorage.setItem('user', JSON.stringify(response.data));
         auth.logIn();
@@ -61,7 +60,6 @@ const SignIn = () => {
       } catch (err) {
         actions.setSubmitting(false);
         if (!err.isAxiosError) {
-          console.log(t('errors.unknown'));
           toast.error(t('errors.unknown'));
           throw err;
         }
@@ -70,7 +68,6 @@ const SignIn = () => {
           toast.error(t('signIn.signInFailed'));
           inputRef.current.select();
         } else {
-          console.log(t('errors.network'));
           toast.error(t('errors.network'));
           throw err;
         }
@@ -143,13 +140,7 @@ const SignIn = () => {
                     variant="primary"
                     className="w-100 pb-2 pt-2 mt-5"
                     data-disable-with="Войти"
-                    disabled={
-                      formik.isSubmitting
-                      // || formik.errors.username
-                      // || formik.errors.password
-                      // || !formik.values.username
-                      // || !formik.values.password
-                    }
+                    disabled={formik.isSubmitting}
                   >
                     {formik.isSubmitting ? (
                       <Loading />

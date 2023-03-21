@@ -8,7 +8,6 @@ export const channelsApi = createApi({
     prepareHeaders: (headers) => {
       const userId = JSON.parse(localStorage.getItem('user'));
       const { token } = userId;
-      // const token = getState().auth.token
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }
@@ -22,6 +21,4 @@ export const channelsApi = createApi({
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useGetChannelsDataQuery } = channelsApi;

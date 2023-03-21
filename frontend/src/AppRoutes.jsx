@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import useAuth from './hooks';
+import useAuth from './hooks/useAuth';
 import Layout from './components/Layout';
 import Chat from './Pages/Chat';
 import SignIn from './Pages/SignIn';

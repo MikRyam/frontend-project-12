@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import leoProfanity from 'leo-profanity';
 import { BsSendFill } from 'react-icons/bs';
-import useAuth, { useSocket } from '../../hooks';
+import useAuth from '../../hooks/useAuth';
+import useSocket from '../../hooks/useSocket';
 
 const NewMessageInput = () => {
   const [text, setText] = useState('');

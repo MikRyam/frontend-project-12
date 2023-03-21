@@ -13,10 +13,6 @@ const MessagesBox = () => {
     ({ channelId }) => channelId === currentChannelId,
   );
 
-  if (channelMessages) {
-    console.log('channelMessages: ', channelMessages);
-  }
-
   useEffect(() => {
     // 👇️ scroll to bottom every time messages change
     lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });

@@ -19,7 +19,6 @@ const DropDownChannelMenu = ({ channel }) => {
     );
   };
   const handleRenameChannel = () => {
-    console.log('channel-modal: ', channel);
     dispatch(
       openModal({
         type: 'renameChannel',

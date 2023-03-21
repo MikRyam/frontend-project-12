@@ -1,5 +1,5 @@
 import React from 'react';
-import useAuth from '../../hooks';
+import useAuth from '../../hooks/useAuth';
 
 const MessageItem = ({ body, date, username }) => {
   const auth = useAuth();
