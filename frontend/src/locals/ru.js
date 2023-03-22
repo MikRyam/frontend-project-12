@@ -34,7 +34,7 @@ const ruLocales = {
       },
     },
     navbar: {
-      mainLabel: 'Hexlet Chat',
+      mainLabel: 'Hexlet ChatPage',
       logout: 'Выйти',
       signIn: 'Войти',
       signUp: 'Зарегистрироваться',

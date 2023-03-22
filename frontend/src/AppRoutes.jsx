@@ -2,10 +2,10 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import useAuth from './hooks/useAuth';
 import Layout from './components/Layout';
-import Chat from './Pages/Chat';
-import SignIn from './Pages/SignIn';
-import SignUp from './Pages/SignUp';
-import NotFoundPage from './Pages/NotFoundPage';
+import ChatPage from './pages/ChatPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
+import NotFoundPage from './pages/NotFoundPage';
 import routes from './routes';
 
 const PrivateRoute = ({ children }) => {
@@ -21,12 +21,12 @@ const AppRoutes = () => (
         index
         element={(
           <PrivateRoute>
-            <Chat />
+            <ChatPage />
           </PrivateRoute>
         )}
       />
-      <Route path="login" element={<SignIn />} />
-      <Route path="signup" element={<SignUp />} />
+      <Route path="login" element={<SignInPage />} />
+      <Route path="signup" element={<SignUpPage />} />
     </Route>
     <Route path="*" element={<NotFoundPage />} />
   </Routes>

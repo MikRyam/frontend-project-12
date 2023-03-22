@@ -18,7 +18,7 @@ import routes from '../routes';
 import useAuth from '../hooks/useAuth';
 import Loading from '../components/Loading';
 
-const SignIn = () => {
+const SignInPage = () => {
   const inputRef = useRef(null);
   const { t } = useTranslation();
   const [authFailed, setAuthFailed] = useState(false);
@@ -156,7 +156,7 @@ const SignIn = () => {
                 <span className="text-muted">
                   {t('signIn.footer.signUpHeader')}
                 </span>
-                <Link className="link-dark" to="/signup">
+                <Link className="link-dark" to={routes.signUpPagePath()}>
                   {t('signIn.footer.signUp')}
                 </Link>
               </div>
@@ -168,4 +168,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInPage;

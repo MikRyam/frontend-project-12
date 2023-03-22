@@ -7,7 +7,7 @@ import ChannelHeader from '../components/Chat/ChannelHeader';
 import MessagesBox from '../components/Chat/MessagesBox';
 import NewMessageInput from '../components/Chat/newMessageInput';
 
-const Chat = () => (
+const ChatPage = () => (
   <Container className="h-100 my-4 overflow-hidden rounded shadow text-center text-dark">
     <Row className="h-100 bg-white d-flex flex-md-row overflow-hidden rounded">
       <Col
@@ -29,4 +29,4 @@ const Chat = () => (
   </Container>
 );
 
-export default Chat;
+export default ChatPage;

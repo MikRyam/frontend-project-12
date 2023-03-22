@@ -18,7 +18,7 @@ import routes from '../routes';
 import useAuth from '../hooks/useAuth';
 import Loading from '../components/Loading';
 
-const SignUp = () => {
+const SignUpPage = () => {
   const inputRef = useRef(null);
   const { t } = useTranslation();
   const [regFailed, setRegFailed] = useState(false);
@@ -208,4 +208,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpPage;
