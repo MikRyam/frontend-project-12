@@ -31,11 +31,9 @@ const init = async () => {
   leoProfanity.add(leoProfanity.getDictionary('ru'));
 
   const rollbarConfig = {
-    // accessToken: process.env.REACT_APP_ACCESS_TOKEN,
-    accessToken: '',
+    accessToken: process.env.REACT_APP_ACCESS_TOKEN,
     environment: process.env.NODE_ENV,
   };
-  console.log(rollbarConfig);
 
   return (
     <BrowserRouter>
