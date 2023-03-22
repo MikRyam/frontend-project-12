@@ -14,7 +14,7 @@ You can login, signup, logout. You can creat, rename or remove channels and send
 
 ## App Preview:
 
-![Chat App](./preview_images/appPreview.png "Chat App Preview")
+![Chat App](./preview_images/chatAppPreview.png "Chat App Preview")
 
 
 ---
@@ -64,7 +64,7 @@ make install
 ```bash
 make start
 ```
-The development server will be started at http://0.0.0.0:5001/
+The production server will be started at http://0.0.0.0:5001/
 
 ## Other available scripts
 
