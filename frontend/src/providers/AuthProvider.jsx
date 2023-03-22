@@ -5,7 +5,7 @@ const AuthProvider = ({ children }) => {
   const currentUser = JSON.parse(localStorage.getItem('user'));
   const username = currentUser ? currentUser.username : null;
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(!!username);
 
   const AuthProviderValue = useMemo(() => {
     const logIn = () => setLoggedIn(true);
