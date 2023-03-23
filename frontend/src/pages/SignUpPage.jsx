@@ -64,7 +64,7 @@ const SignUpPage = () => {
       try {
         actions.setSubmitting(true);
         const response = await axios.post(routes.signupPath(), values);
-        localStorage.setItem('user', JSON.stringify(response.data));
+        await localStorage.setItem('user', JSON.stringify(response.data));
         auth.logIn();
         setRegFailed(false);
         actions.setSubmitting(false);

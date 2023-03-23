@@ -50,7 +50,7 @@ const SignInPage = () => {
       try {
         actions.setSubmitting(true);
         const response = await axios.post(routes.loginPath(), values);
-        localStorage.setItem('user', JSON.stringify(response.data));
+        await localStorage.setItem('user', JSON.stringify(response.data));
         auth.logIn();
         setAuthFailed(false);
         actions.setSubmitting(false);
