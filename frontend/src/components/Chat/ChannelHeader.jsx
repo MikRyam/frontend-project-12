@@ -1,11 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useGetChannelsDataQuery } from '../../features/channels/channelsApiSlice';
 
 const ChannelHeader = () => {
   const { t } = useTranslation();
-  const { isLoading } = useGetChannelsDataQuery();
   const channels = useSelector((state) => state.channels.channels);
   const currentChannelId = useSelector(
     (state) => state.channels.currentChannelId,
@@ -18,26 +16,17 @@ const ChannelHeader = () => {
 
   return (
     <div className="bg-light mb-4 p-3 shadow-sm small text-start">
-      {isLoading ? (
-        <div className="col-2 d-flex flex-column gap-1 small">
-          <div className="bg-dark bg-opacity-10 py-2 rounded" />
-          <div className="bg-dark bg-opacity-10 py-2 rounded" />
-        </div>
-      ) : (
-        <>
-          <p className="m-0">
-            <b>
-              #&nbsp;
-              {currentChannel?.name}
-            </b>
-          </p>
-          <span className="text-muted">
-            {t('chat.messages.counter.count', {
-              count: channelMessages?.length ?? 0,
-            })}
-          </span>
-        </>
-      )}
+      <p className="m-0">
+        <b>
+          #&nbsp;
+          {currentChannel?.name}
+        </b>
+      </p>
+      <span className="text-muted">
+        {t('chat.messages.counter.count', {
+          count: channelMessages?.length ?? 0,
+        })}
+      </span>
     </div>
   );
 };

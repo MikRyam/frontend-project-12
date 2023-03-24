@@ -8,6 +8,9 @@ const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(!!username);
 
   const AuthProviderValue = useMemo(() => {
+    const headers = (currentUser && currentUser.token)
+      ? { Authorization: `Bearer ${currentUser.token}` }
+      : {};
     const logIn = () => setLoggedIn(true);
     const logOut = () => {
       localStorage.removeItem('user');
@@ -18,6 +21,7 @@ const AuthProvider = ({ children }) => {
       logIn,
       logOut,
       username,
+      headers,
     };
   }, [loggedIn, username]);
 

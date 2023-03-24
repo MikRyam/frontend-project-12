@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { channelsApi } from '../channels/channelsApiSlice';
-import { removeChannel } from '../channels/channelsSlice';
+import { removeChannel, setChannels } from '../channels/channelsSlice';
 
 const initialState = {
   messages: [],
@@ -22,12 +21,9 @@ const messagesSlice = createSlice({
           ({ channelId }) => channelId !== payload,
         );
       })
-      .addMatcher(
-        channelsApi.endpoints.getChannelsData.matchFulfilled,
-        (state, { payload }) => {
-          state.messages = payload.messages;
-        },
-      );
+      .addCase(setChannels, (state, { payload }) => {
+        state.messages = payload.messages;
+      });
   },
 });
 
